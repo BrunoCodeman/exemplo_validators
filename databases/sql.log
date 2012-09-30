@@ -1,0 +1,70 @@
+timestamp: 2012-09-10T18:01:52.667660
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2012-09-10T18:01:52.672478
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-09-10T18:01:52.676805
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2012-09-10T18:01:52.680859
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2012-09-10T18:01:52.685959
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-09-10T18:01:52.689600
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2012-09-30T00:57:44.441276
+CREATE TABLE empresas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome_da_empresa CHAR(512)
+);
+success!
+timestamp: 2012-09-30T00:57:44.444278
+CREATE TABLE funcionarios(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome_do_funcionario CHAR(512),
+    email CHAR(512)
+);
+success!
+timestamp: 2012-09-30T01:21:23.451729
+ALTER TABLE funcionarios ADD empresa INTEGER REFERENCES empresas (id) ON DELETE CASCADE;

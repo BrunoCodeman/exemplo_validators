@@ -1,0 +1,4 @@
+{{extend 'layout.html'}}
+<h1>Novo Funcionário</h1>
+<form action = "{{URL('funcionarios','novo')}}">
+</form>

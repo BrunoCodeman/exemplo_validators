@@ -1,0 +1,19 @@
+{{extend 'layout.html'}}
+<h1>Novo Funcionário</h1>
+<form action = "{{=URL('funcionarios','novo')}}" method="post">
+    <div>
+        <label for="nome_da_empresa">Nome da empresa:</label>
+        <input type="text" id="nome_da_empresa" name="nome_da_empresa"/>
+    </div>
+    <div>
+        <label for="nome_do_funcionario">Nome do funcionário:</label>
+        <input type="text" id="nome_do_funcionario" name="nome_do_funcionario"/>
+    </div>
+    <div>
+        <label for="email">Email do funcionário:</label>
+        <input type="text" id="email" name="email"/>
+    </div>
+    <div>
+        <input type="submit" value="salvar" />
+    </div>
+</form>
